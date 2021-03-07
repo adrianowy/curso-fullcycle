@@ -1,0 +1,15 @@
+FROM nginx:latest
+
+# criar usuario qualquer
+# USER adrianowy
+
+# criar uma pasta de trabalho
+WORKDIR /app
+
+# executa comando dentro do container
+RUN apt-get update && \
+    apt-get install vim -y
+
+
+# copia os arquivos do meu computador para o diretório dentro da imagem
+COPY html /usr/share/nginx/html/

@@ -1,0 +1,11 @@
+FROM ubuntu
+
+ENTRYPOINT [ "echo", "Hello" ]
+
+CMD [ "Worldd" ]
+
+## build image
+# docker build -t adrianowy/hello-ubuntu .
+
+## executar
+# docker run --rm adrianowy/hello-ubuntu

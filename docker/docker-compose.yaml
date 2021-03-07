@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  laravel:
+    image: adrianowy/laravel
+    container_name: laravel
+
+  nginx:
+    image: adrianowy/nginx-fullcycle
+    container_name: nginx
+    ports: 
+      - 8080:80
