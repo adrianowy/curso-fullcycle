@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+  laravel:
+    # para trabalhar em ambiente de desenvolvimento, utiliza o build:context
+    # build:
+      # context: ./laravel
+      # dockerfile: Dockerfile.prod
+    image: adrianowy/laravel
+    container_name: laravel
+    # networks:
+      # - redeadriano
+
+  nginx:
+    image: adrianowy/nginx-fullcycle
+    container_name: nginx
+    # networks:
+      # - redeadriano
+    ports: 
+      - 8080:80
+
+# networks: 
+  # redeadriano:
+    # dirver: bridge

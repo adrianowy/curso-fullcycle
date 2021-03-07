@@ -2,12 +2,23 @@ version: '3'
 
 services:
 
-  laravel:
-    image: adrianowy/laravel
-    container_name: laravel
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    # se por algum motivo o container cair, vai reiniciar sozinho
+    restart: always
+    # se precisar entrar no container, o tty deve estar habilitado
+    tty: true
+    volumes:
+      - ./mysql:var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
+      - node-network
 
-  nginx:
-    image: adrianowy/nginx-fullcycle
-    container_name: nginx
-    ports: 
-      - 8080:80
+networks: 
+  node-network:
+    driver: bridge
