@@ -6,6 +6,7 @@ services:
     build:
       context: nodejs
     container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     networks:
       - node-network
     volumes: 
@@ -14,8 +15,9 @@ services:
     ports: 
       - 3001:3000
     # esse comando indica que um container é dependente do outro
-    # depends_on: 
-      #- db
+    # então na ordem de criação do serviços, vai primeiro criar DB e depois o APP
+    depends_on: 
+      - db
 
   db:
     image: mysql:5.7.16
